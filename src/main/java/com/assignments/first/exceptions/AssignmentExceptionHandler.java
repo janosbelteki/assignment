@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class OwnExceptionHandler {
+public class AssignmentExceptionHandler {
     @ExceptionHandler(AssignmentException.class)
-    protected ResponseEntity<ErrorObject> handleOwnException(AssignmentException e) {
+    protected ResponseEntity<ErrorObject> handleAssignmentException(AssignmentException e) {
         e.printStackTrace();
         return ResponseEntity.status(e.getHttpStatus()).body(new ErrorObject(e.getMessages().get(0)));
     }

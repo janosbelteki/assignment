@@ -1,6 +1,6 @@
 package com.assignments.first.controller;
 
-import com.assignments.first.exceptions.OwnExceptionHandler;
+import com.assignments.first.exceptions.AssignmentExceptionHandler;
 import com.assignments.first.service.ApplicationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +19,7 @@ import static com.assignments.first.common.Constants.API_USER;
 @RestController
 @Validated
 @RequestMapping(API_PATH + API_USER)
-public class ApplicationController extends OwnExceptionHandler {
+public class ApplicationController extends AssignmentExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(ApplicationController.class);
     private final ApplicationService applicationService;
 
