@@ -3,427 +3,727 @@
     "firstName": "Reeve",
     "lastName": "Davenport",
     "age": 52,
-    "gender": "Male",
-    "hobbies": ["Cooking", "Hiking", "Photography"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Cooking",
+        "duration": 120,
+        "lastDone": "2023-07-02T10:00:00Z"
+      },
+      {
+        "name": "Hiking",
+        "duration": 90,
+        "lastDone": "2023-06-28T15:30:00Z"
+      },
+      {
+        "name": "Photography",
+        "duration": 60,
+        "lastDone": "2023-07-01T18:45:00Z"
+      }
+    ]
   },
   {
     "firstName": "Tyson",
     "lastName": "Reyes",
     "age": 54,
-    "gender": "Male",
-    "hobbies": ["Gardening", "Reading"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Gardening",
+        "duration": 180,
+        "lastDone": "2023-06-29T09:15:00Z"
+      },
+      {
+        "name": "Reading",
+        "duration": 60,
+        "lastDone": "2023-07-02T20:30:00Z"
+      }
+    ]
   },
   {
     "firstName": "Ray",
     "lastName": "Horne",
     "age": 74,
-    "gender": "Male",
-    "hobbies": ["Painting", "Soccer", "Dancing"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Painting",
+        "duration": 120,
+        "lastDone": "2023-06-30T14:00:00Z"
+      },
+      {
+        "name": "Soccer",
+        "duration": 90,
+        "lastDone": "2023-07-01T17:45:00Z"
+      },
+      {
+        "name": "Dancing",
+        "duration": 60,
+        "lastDone": "2023-06-29T21:20:00Z"
+      }
+    ]
   },
   {
     "firstName": "Abe",
     "lastName": "Poole",
     "age": 35,
-    "gender": "Male",
-    "hobbies": ["Hiking", "Swimming"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Hiking",
+        "duration": 90,
+        "lastDone": "2023-07-01T12:30:00Z"
+      },
+      {
+        "name": "Swimming",
+        "duration": 60,
+        "lastDone": "2023-07-02T08:15:00Z"
+      }
+    ]
   },
   {
     "firstName": "Charles",
     "lastName": "Hendrix",
     "age": 80,
-    "gender": "Male",
-    "hobbies": ["Reading", "Basketball", "Writing"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Reading",
+        "duration": 60,
+        "lastDone": "2023-07-01T09:45:00Z"
+      },
+      {
+        "name": "Basketball",
+        "duration": 120,
+        "lastDone": "2023-06-29T16:10:00Z"
+      },
+      {
+        "name": "Writing",
+        "duration": 60,
+        "lastDone": "2023-06-30T19:30:00Z"
+      }
+    ]
   },
   {
     "firstName": "Robert",
     "lastName": "Pacheco",
     "age": 86,
-    "gender": "Male",
-    "hobbies": ["Soccer", "Gaming", "Cooking", "Painting"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Soccer",
+        "duration": 90,
+        "lastDone": "2023-06-30T11:20:00Z"
+      },
+      {
+        "name": "Gaming",
+        "duration": 120,
+        "lastDone": "2023-06-29T14:40:00Z"
+      },
+      {
+        "name": "Cooking",
+        "duration": 120,
+        "lastDone": "2023-07-02T10:00:00Z"
+      },
+      {
+        "name": "Painting",
+        "duration": 120,
+        "lastDone": "2023-06-28T17:50:00Z"
+      }
+    ]
   },
   {
     "firstName": "Kalan",
     "lastName": "Brown",
     "age": 88,
-    "gender": "Male",
-    "hobbies": ["Dancing", "Photography"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Dancing",
+        "duration": 60,
+        "lastDone": "2023-06-29T21:20:00Z"
+      },
+      {
+        "name": "Photography",
+        "duration": 60,
+        "lastDone": "2023-07-01T18:45:00Z"
+      }
+    ]
   },
   {
     "firstName": "Carelyn",
     "lastName": "Mays",
     "age": 22,
-    "gender": "Female",
-    "hobbies": ["Photography", "Swimming", "Chess"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Photography",
+        "duration": 60,
+        "lastDone": "2023-07-01T18:45:00Z"
+      },
+      {
+        "name": "Swimming",
+        "duration": 60,
+        "lastDone": "2023-07-02T08:15:00Z"
+      },
+      {
+        "name": "Chess",
+        "duration": 90,
+        "lastDone": "2023-06-28T13:40:00Z"
+      }
+    ]
   },
   {
     "firstName": "Michael",
     "lastName": "Skinner",
     "age": 35,
-    "gender": "Male",
-    "hobbies": ["Swimming", "Basketball", "Writing"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Swimming",
+        "duration": 60,
+        "lastDone": "2023-07-02T08:15:00Z"
+      },
+      {
+        "name": "Basketball",
+        "duration": 120,
+        "lastDone": "2023-06-29T16:10:00Z"
+      },
+      {
+        "name": "Writing",
+        "duration": 60,
+        "lastDone": "2023-06-30T19:30:00Z"
+      }
+    ]
   },
   {
     "firstName": "Amelia",
     "lastName": "Gregory",
     "age": 88,
-    "gender": "Female",
-    "hobbies": ["Basketball", "Tennis", "Cycling"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Basketball",
+        "duration": 120,
+        "lastDone": "2023-06-29T16:10:00Z"
+      },
+      {
+        "name": "Tennis",
+        "duration": 90,
+        "lastDone": "2023-06-28T12:00:00Z"
+      },
+      {
+        "name": "Cycling",
+        "duration": 60,
+        "lastDone": "2023-07-01T13:20:00Z"
+      }
+    ]
   },
   {
     "firstName": "Will",
     "lastName": "Church",
     "age": 26,
-    "gender": "Male",
+    "gender": "MALE",
     "hobbies": []
   },
   {
     "firstName": "Levi",
     "lastName": "Donaldson",
     "age": 61,
-    "gender": "Male",
-    "hobbies": ["Cycling", "Running"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Cycling",
+        "duration": 60,
+        "lastDone": "2023-07-01T13:20:00Z"
+      },
+      {
+        "name": "Running",
+        "duration": 90,
+        "lastDone": "2023-06-29T07:30:00Z"
+      }
+    ]
   },
   {
     "firstName": "Selene",
     "lastName": "Richard",
     "age": 51,
-    "gender": "Female",
-    "hobbies": ["Fishing", "Singing", "Yoga", "Painting", "Writing"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Fishing",
+        "duration": 90,
+        "lastDone": "2023-06-30T09:45:00Z"
+      },
+      {
+        "name": "Singing",
+        "duration": 60,
+        "lastDone": "2023-07-02T15:10:00Z"
+      },
+      {
+        "name": "Yoga",
+        "duration": 120,
+        "lastDone": "2023-06-29T10:20:00Z"
+      },
+      {
+        "name": "Painting",
+        "duration": 120,
+        "lastDone": "2023-06-28T17:50:00Z"
+      },
+      {
+        "name": "Writing",
+        "duration": 60,
+        "lastDone": "2023-06-30T19:30:00Z"
+      }
+    ]
   },
   {
     "firstName": "Debree",
     "lastName": "Gordon",
     "age": 63,
-    "gender": "Female",
-    "hobbies": ["Singing", "Yoga", "Chess"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Singing",
+        "duration": 60,
+        "lastDone": "2023-07-02T15:10:00Z"
+      },
+      {
+        "name": "Yoga",
+        "duration": 120,
+        "lastDone": "2023-06-29T10:20:00Z"
+      },
+      {
+        "name": "Chess",
+        "duration": 90,
+        "lastDone": "2023-06-28T13:40:00Z"
+      }
+    ]
   },
   {
     "firstName": "Denise",
     "lastName": "Meyer",
     "age": 59,
-    "gender": "Female",
-    "hobbies": ["Writing", "Tennis"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Writing",
+        "duration": 60,
+        "lastDone": "2023-06-30T19:30:00Z"
+      },
+      {
+        "name": "Tennis",
+        "duration": 90,
+        "lastDone": "2023-06-28T12:00:00Z"
+      }
+    ]
   },
   {
     "firstName": "Amity",
     "lastName": "Andrade",
     "age": 94,
-    "gender": "Female",
-    "hobbies": ["Tennis", "Running", "Hiking"]
-  },
-  {
-    "firstName": "Tristan",
-    "lastName": "Mathis",
-    "age": 70,
-    "gender": "Male",
-    "hobbies": ["Yoga", "Gaming"]
-  },
-  {
-    "firstName": "Arden",
-    "lastName": "Aguilar",
-    "age": 31,
-    "gender": "Female",
-    "hobbies": ["Chess", "Cycling", "Painting"]
-  },
-  {
-    "firstName": "James",
-    "lastName": "Watson",
-    "age": 28,
-    "gender": "Male",
-    "hobbies": ["Running", "Hiking", "Gardening"]
-  },
-  {
-    "firstName": "Cash",
-    "lastName": "Conrad",
-    "age": 38,
-    "gender": "Male",
-    "hobbies": ["Gaming", "Reading", "Swimming"]
-  },
-  {
-    "firstName": "Sharon",
-    "lastName": "Schmitt",
-    "age": 25,
-    "gender": "Female",
-    "hobbies": []
-  },
-  {
-    "firstName": "Bianca",
-    "lastName": "Black",
-    "age": 65,
-    "gender": "Female",
-    "hobbies": ["Travelling", "Photography", "Drawing"]
-  },
-  {
-    "firstName": "Jax",
-    "lastName": "Cherry",
-    "age": 98,
-    "gender": "Male",
-    "hobbies": ["Photography", "Soccer"]
-  },
-  {
-    "firstName": "Lucinda",
-    "lastName": "Fletcher",
-    "age": 37,
-    "gender": "Female",
-    "hobbies": ["Drawing", "Gardening"]
-  },
-  {
-    "firstName": "Vincent",
-    "lastName": "Soto",
-    "age": 69,
-    "gender": "Male",
-    "hobbies": ["Soccer", "Cooking", "Hiking"]
-  },
-  {
-    "firstName": "Gregory",
-    "lastName": "Dunn",
-    "age": 75,
-    "gender": "Male",
-    "hobbies": ["Gardening", "Reading", "Singing", "Yoga"]
-  },
-  {
-    "firstName": "Meaghan",
-    "lastName": "Arellano",
-    "age": 38,
-    "gender": "Female",
-    "hobbies": ["Cooking", "Painting", "Dancing"]
-  },
-  {
-    "firstName": "Jasper",
-    "lastName": "Griffith",
-    "age": 91,
-    "gender": "Male",
-    "hobbies": ["Painting", "Chess", "Cycling"]
-  },
-  {
-    "firstName": "Sue",
-    "lastName": "Schultz",
-    "age": 27,
-    "gender": "Female",
-    "hobbies": []
-  },
-  {
-    "firstName": "Grey",
-    "lastName": "Huber",
-    "age": 38,
-    "gender": "Male",
-    "hobbies": ["Hiking", "Writing"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Tennis",
+        "duration": 90,
+        "lastDone": "2023-06-28T12:00:00Z"
+      },
+      {
+        "name": "Running",
+        "duration": 90,
+        "lastDone": "2023-06-29T07:30:00Z"
+      },
+      {
+        "name": "Cycling",
+        "duration": 60,
+        "lastDone": "2023-07-01T13:20:00Z"
+      }
+    ]
   },
   {
     "firstName": "Sullivan",
     "lastName": "Salazar",
     "age": 97,
-    "gender": "Male",
-    "hobbies": ["Reading", "Fishing", "Tennis"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Reading",
+        "duration": 120,
+        "lastDone": "2023-06-29T10:30:00Z"
+      },
+      {
+        "name": "Fishing",
+        "duration": 90,
+        "lastDone": "2023-06-28T15:45:00Z"
+      },
+      {
+        "name": "Tennis",
+        "duration": 60,
+        "lastDone": "2023-06-27T18:15:00Z"
+      }
+    ]
   },
   {
     "firstName": "Monteen",
     "lastName": "Kerr",
     "age": 74,
-    "gender": "Female",
-    "hobbies": ["Dancing", "Basketball", "Photography"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Dancing",
+        "duration": 90,
+        "lastDone": "2023-06-30T19:00:00Z"
+      },
+      {
+        "name": "Basketball",
+        "duration": 120,
+        "lastDone": "2023-06-29T11:45:00Z"
+      },
+      {
+        "name": "Photography",
+        "duration": 180,
+        "lastDone": "2023-06-28T14:20:00Z"
+      }
+    ]
   },
   {
     "firstName": "Evelyn",
     "lastName": "Ashley",
     "age": 35,
-    "gender": "Female",
-    "hobbies": ["Swimming", "Soccer", "Yoga"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Swimming",
+        "duration": 60,
+        "lastDone": "2023-06-30T07:30:00Z"
+      },
+      {
+        "name": "Soccer",
+        "duration": 90,
+        "lastDone": "2023-06-29T16:10:00Z"
+      },
+      {
+        "name": "Yoga",
+        "duration": 45,
+        "lastDone": "2023-06-28T09:20:00Z"
+      }
+    ]
   },
   {
     "firstName": "Coy",
     "lastName": "Wright",
     "age": 40,
-    "gender": "Male",
-    "hobbies": ["Basketball", "Running"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Basketball",
+        "duration": 120,
+        "lastDone": "2023-06-30T13:00:00Z"
+      },
+      {
+        "name": "Running",
+        "duration": 45,
+        "lastDone": "2023-06-29T08:40:00Z"
+      }
+    ]
   },
   {
     "firstName": "Zoe",
     "lastName": "Mayer",
     "age": 79,
-    "gender": "Female",
-    "hobbies": ["Writing", "Singing", "Gardening"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Writing",
+        "duration": 90,
+        "lastDone": "2023-06-30T16:20:00Z"
+      },
+      {
+        "name": "Singing",
+        "duration": 60,
+        "lastDone": "2023-06-29T12:50:00Z"
+      },
+      {
+        "name": "Gardening",
+        "duration": 120,
+        "lastDone": "2023-06-28T17:30:00Z"
+      }
+    ]
   },
   {
     "firstName": "Caprice",
     "lastName": "Massey",
     "age": 70,
-    "gender": "Female",
-    "hobbies": ["Fishing", "Yoga", "Tennis"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Fishing",
+        "duration": 90,
+        "lastDone": "2023-06-30T10:40:00Z"
+      },
+      {
+        "name": "Yoga",
+        "duration": 45,
+        "lastDone": "2023-06-29T14:15:00Z"
+      },
+      {
+        "name": "Tennis",
+        "duration": 60,
+        "lastDone": "2023-06-28T19:05:00Z"
+      }
+    ]
   },
   {
     "firstName": "Elodie",
     "lastName": "Arias",
     "age": 88,
-    "gender": "Female",
-    "hobbies": ["Singing", "Yoga", "Chess", "Photography", "Writing"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Singing",
+        "duration": 60,
+        "lastDone": "2023-06-30T15:25:00Z"
+      },
+      {
+        "name": "Yoga",
+        "duration": 45,
+        "lastDone": "2023-06-29T12:15:00Z"
+      },
+      {
+        "name": "Chess",
+        "duration": 90,
+        "lastDone": "2023-06-28T18:35:00Z"
+      },
+      {
+        "name": "Photography",
+        "duration": 180,
+        "lastDone": "2023-06-27T20:50:00Z"
+      },
+      {
+        "name": "Writing",
+        "duration": 90,
+        "lastDone": "2023-06-26T23:10:00Z"
+      }
+    ]
   },
   {
     "firstName": "Dominick",
     "lastName": "Fernandez",
     "age": 97,
-    "gender": "Male",
-    "hobbies": ["Yoga", "Tennis", "Running", "Painting"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Yoga",
+        "duration": 45,
+        "lastDone": "2023-06-30T14:30:00Z"
+      },
+      {
+        "name": "Tennis",
+        "duration": 60,
+        "lastDone": "2023-06-29T11:20:00Z"
+      },
+      {
+        "name": "Running",
+        "duration": 45,
+        "lastDone": "2023-06-28T15:50:00Z"
+      },
+      {
+        "name": "Painting",
+        "duration": 120,
+        "lastDone": "2023-06-27T19:40:00Z"
+      }
+    ]
   },
   {
     "firstName": "Myron",
     "lastName": "Fleming",
     "age": 43,
-    "gender": "Male",
-    "hobbies": ["Tennis", "Cycling", "Cooking", "Hiking"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Tennis",
+        "duration": 60,
+        "lastDone": "2023-06-30T09:15:00Z"
+      },
+      {
+        "name": "Cycling",
+        "duration": 75,
+        "lastDone": "2023-06-29T13:05:00Z"
+      },
+      {
+        "name": "Cooking",
+        "duration": 90,
+        "lastDone": "2023-06-28T16:55:00Z"
+      },
+      {
+        "name": "Hiking",
+        "duration": 120,
+        "lastDone": "2023-06-27T21:25:00Z"
+      }
+    ]
   },
   {
     "firstName": "Clelia",
     "lastName": "Mccarthy",
     "age": 36,
-    "gender": "Female",
-    "hobbies": ["Cycling", "Running", "Fishing", "Gaming"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Cycling",
+        "duration": 75,
+        "lastDone": "2023-06-30T08:20:00Z"
+      },
+      {
+        "name": "Running",
+        "duration": 45,
+        "lastDone": "2023-06-29T14:50:00Z"
+      },
+      {
+        "name": "Fishing",
+        "duration": 90,
+        "lastDone": "2023-06-28T17:30:00Z"
+      },
+      {
+        "name": "Gaming",
+        "duration": 60,
+        "lastDone": "2023-06-27T20:15:00Z"
+      }
+    ]
   },
   {
     "firstName": "Aiden",
     "lastName": "Pearson",
     "age": 81,
-    "gender": "Male",
-    "hobbies": ["Running", "Gardening", "Yoga"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Running",
+        "duration": 45,
+        "lastDone": "2023-06-30T12:35:00Z"
+      },
+      {
+        "name": "Gardening",
+        "duration": 120,
+        "lastDone": "2023-06-29T16:25:00Z"
+      },
+      {
+        "name": "Yoga",
+        "duration": 45,
+        "lastDone": "2023-06-28T18:45:00Z"
+      }
+    ]
   },
   {
     "firstName": "Adele",
     "lastName": "Marks",
     "age": 36,
-    "gender": "Female",
+    "gender": "FEMALE",
     "hobbies": []
   },
   {
     "firstName": "Malachi",
     "lastName": "Davies",
     "age": 46,
-    "gender": "Male",
-    "hobbies": ["Chess", "Gaming", "Painting"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Chess",
+        "duration": 90,
+        "lastDone": "2023-06-30T11:50:00Z"
+      },
+      {
+        "name": "Gaming",
+        "duration": 60,
+        "lastDone": "2023-06-29T15:30:00Z"
+      },
+      {
+        "name": "Painting",
+        "duration": 120,
+        "lastDone": "2023-06-28T17:10:00Z"
+      }
+    ]
   },
   {
     "firstName": "Ellison",
     "lastName": "Petersen",
     "age": 38,
-    "gender": "Male",
-    "hobbies": ["Gaming", "Travelling"]
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Gaming",
+        "duration": 60,
+        "lastDone": "2023-06-30T14:00:00Z"
+      },
+      {
+        "name": "Travelling",
+        "duration": 150,
+        "lastDone": "2023-06-29T16:50:00Z"
+      }
+    ]
   },
   {
     "firstName": "Harriet",
     "lastName": "Craig",
     "age": 78,
-    "gender": "Female",
-    "hobbies": ["Travelling", "Drawing", "Cooking"]
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Travelling",
+        "duration": 150,
+        "lastDone": "2023-06-30T13:25:00Z"
+      },
+      {
+        "name": "Painting",
+        "duration": 120,
+        "lastDone": "2023-06-29T17:15:00Z"
+      }
+    ]
   },
   {
-    "firstName": "Hugh",
-    "lastName": "Romero",
-    "age": 44,
-    "gender": "Male",
-    "hobbies": ["Drawing", "Soccer", "Reading", "Gardening", "Yoga"]
+    "firstName": "Jules",
+    "lastName": "Parrish",
+    "age": 63,
+    "gender": "FEMALE",
+    "hobbies": [
+      {
+        "name": "Dancing",
+        "duration": 90,
+        "lastDone": "2023-06-30T12:00:00Z"
+      },
+      {
+        "name": "Photography",
+        "duration": 180,
+        "lastDone": "2023-06-29T14:40:00Z"
+      },
+      {
+        "name": "Writing",
+        "duration": 90,
+        "lastDone": "2023-06-28T17:20:00Z"
+      }
+    ]
   },
   {
-    "firstName": "Nathan",
-    "lastName": "Livingston",
-    "age": 29,
-    "gender": "Male",
-    "hobbies": ["Reading", "Basketball", "Writing"]
-  },
-  {
-    "firstName": "Selah",
-    "lastName": "Nicholson",
-    "age": 49,
-    "gender": "Female",
-    "hobbies": ["Basketball", "Tennis", "Cycling", "Running"]
-  },
-  {
-    "firstName": "Haiden",
-    "lastName": "Mccall",
-    "age": 41,
-    "gender": "Male",
-    "hobbies": ["Running", "Gardening", "Singing", "Chess"]
-  },
-  {
-    "firstName": "Bea",
-    "lastName": "Sexton",
-    "age": 32,
-    "gender": "Female",
-    "hobbies": ["Singing", "Yoga", "Chess"]
-  },
-  {
-    "firstName": "Amari",
-    "lastName": "Pugh",
-    "age": 51,
-    "gender": "Male",
-    "hobbies": ["Writing", "Tennis", "Soccer"]
-  },
-  {
-    "firstName": "Zuri",
-    "lastName": "Winters",
-    "age": 24,
-    "gender": "Female",
-    "hobbies": ["Tennis", "Running", "Hiking"]
-  },
-  {
-    "firstName": "Korbin",
-    "lastName": "Zimmerman",
-    "age": 34,
-    "gender": "Male",
-    "hobbies": ["Yoga", "Gaming", "Swimming"]
-  },
-  {
-    "firstName": "Kingsley",
-    "lastName": "Harrington",
-    "age": 68,
-    "gender": "Male",
-    "hobbies": ["Swimming", "Basketball", "Writing"]
-  },
-  {
-    "firstName": "Brynleigh",
-    "lastName": "Zuniga",
-    "age": 29,
-    "gender": "Female",
-    "hobbies": ["Basketball", "Tennis", "Cycling", "Running"]
-  },
-  {
-    "firstName": "Giancarlo",
-    "lastName": "Dougherty",
-    "age": 41,
-    "gender": "Male",
-    "hobbies": ["Running", "Gardening", "Singing", "Chess"]
-  },
-  {
-    "firstName": "Marilyn",
-    "lastName": "Kaiser",
-    "age": 32,
-    "gender": "Female",
-    "hobbies": ["Singing", "Yoga", "Chess"]
-  },
-  {
-    "firstName": "Giovanny",
-    "lastName": "Lara",
-    "age": 51,
-    "gender": "Male",
-    "hobbies": ["Writing", "Tennis", "Soccer"]
-  },
-  {
-    "firstName": "Luciana",
-    "lastName": "Mcgrath",
-    "age": 24,
-    "gender": "Female",
-    "hobbies": ["Tennis", "Running", "Hiking"]
-  },
-  {
-    "firstName": "Jovanny",
-    "lastName": "Reid",
-    "age": 34,
-    "gender": "Male",
-    "hobbies": ["Yoga", "Gaming", "Swimming"]
-  },
-  {
-    "firstName": "Kase",
-    "lastName": "Cabrera",
-    "age": 68,
-    "gender": "Male",
-    "hobbies": ["Swimming", "Basketball", "Writing"]
+    "firstName": "Colten",
+    "lastName": "Holden",
+    "age": 31,
+    "gender": "MALE",
+    "hobbies": [
+      {
+        "name": "Soccer",
+        "duration": 90,
+        "lastDone": "2023-06-30T10:15:00Z"
+      },
+      {
+        "name": "Running",
+        "duration": 45,
+        "lastDone": "2023-06-29T14:55:00Z"
+      },
+      {
+        "name": "Gaming",
+        "duration": 60,
+        "lastDone": "2023-06-28T18:40:00Z"
+      }
+    ]
   }
 ]

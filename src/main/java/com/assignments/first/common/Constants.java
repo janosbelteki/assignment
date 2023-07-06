@@ -6,8 +6,9 @@ public class Constants {
     public static final String API_USER = "/users";
 
     // DB
-    public static final String JDBC_URL = "jdbc:h2:mem:users;DB_CLOSE_DELAY=-1";
+    public static final String JDBC_URL = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1";
+    public static final String USER_TABLE = "user_table";
 
     // Resource
-    public static final String USER_DATA_PATH = "user_data/";
+    public static final String USER_DATA_PATH = "user_data/user_data.json";
 }

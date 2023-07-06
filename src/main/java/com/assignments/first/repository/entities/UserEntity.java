@@ -1,49 +1,63 @@
 package com.assignments.first.repository.entities;
 
 import com.assignments.first.common.enums.Gender;
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Table;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class UserEntity {
-    private int userId;
-    String firstName;
-    String lastName;
-    int age;
-    Enum<Gender> gender;
-    List<Hobby> hobbies = null;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userId;
 
-    public int getId() {
-        return userId;
-    }
+    @Column(nullable = false)
+    public String firstName;
 
-    public String getFirstName() {
-        return firstName;
-    }
+    @Column(nullable = false)
+    public String lastName;
 
-    public String getLastName() {
-        return lastName;
-    }
+    @Column(nullable = false)
+    public int age;
 
-    public int getAge() {
-        return age;
-    }
+    @Enumerated(EnumType.STRING)
+    public Gender gender;
 
-    public Enum<Gender> getGender() {
-        return gender;
-    }
-
-    public List<Hobby> getHobbies() {
-        return hobbies;
-    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    public List<Hobby> hobbies;
 }
 
+@Entity
+@Table(name = "hobbies")
 class Hobby {
-    String name;
-    int duration;
-    Timestamp lastDone;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    public String name;
+
+    @Column(nullable = false)
+    public int duration;
+
+    @Column(name = "last_done")
+    public Timestamp lastDone;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }
