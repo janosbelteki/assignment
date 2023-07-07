@@ -8,6 +8,7 @@ public class Constants {
     // DB
     public static final String JDBC_URL = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1";
     public static final String USER_TABLE = "user_table";
+    public static final String HOBBIES_TABLE = "hobbies_table";
 
     // Resource
     public static final String USER_DATA_PATH = "user_data/user_data.json";

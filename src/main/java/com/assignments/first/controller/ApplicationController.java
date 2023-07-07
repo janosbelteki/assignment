@@ -1,6 +1,7 @@
 package com.assignments.first.controller;
 
 import com.assignments.first.exceptions.AssignmentExceptionHandler;
+import com.assignments.first.repository.entities.UserEntity;
 import com.assignments.first.service.ApplicationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,10 +29,10 @@ public class ApplicationController extends AssignmentExceptionHandler {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<String>> getUsers(
+    public ResponseEntity<List<UserEntity>> getUsers(
     ) {
         logger.info("Find users types");
-        List<String> users = applicationService.findUsers();
+        List<UserEntity> users = applicationService.findUsers();
         return ResponseEntity.ok().body(users);
     }
 

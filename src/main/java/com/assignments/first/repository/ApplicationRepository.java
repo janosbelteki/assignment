@@ -1,110 +1,26 @@
 package com.assignments.first.repository;
 
 import com.assignments.first.repository.entities.UserEntity;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
 
-public interface ApplicationRepository extends JpaRepository<UserEntity, Long> {
-    List<String> findUsers();
+import org.springframework.data.repository.CrudRepository;
+
+public interface ApplicationRepository extends CrudRepository<UserEntity, Serializable> {
+    List<UserEntity> findUsers();
 }
 
 @Repository
 class DefaultApplicationRepository implements ApplicationRepository {
     @Override
-    public List<String> findUsers() {
+    public List<UserEntity> findUsers() {
         // TODO: Implement the findUsers method
-        List<String> returnValue = new ArrayList<>();
+        List<UserEntity> returnValue = new ArrayList<>();
         return returnValue;
-    }
-
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public <S extends UserEntity> S saveAndFlush(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends UserEntity> List<S> saveAllAndFlush(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public void deleteAllInBatch(Iterable<UserEntity> entities) {
-
-    }
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public UserEntity getOne(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public UserEntity getById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public UserEntity getReferenceById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public <S extends UserEntity> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-
-    @Override
-    public <S extends UserEntity> List<S> findAll(Example<S> example) {
-        return null;
-    }
-
-    @Override
-    public <S extends UserEntity> List<S> findAll(Example<S> example, Sort sort) {
-        return null;
-    }
-
-    @Override
-    public <S extends UserEntity> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends UserEntity> long count(Example<S> example) {
-        return 0;
-    }
-
-    @Override
-    public <S extends UserEntity> boolean exists(Example<S> example) {
-        return false;
-    }
-
-    @Override
-    public <S extends UserEntity, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        return null;
     }
 
     @Override
@@ -113,27 +29,27 @@ class DefaultApplicationRepository implements ApplicationRepository {
     }
 
     @Override
-    public <S extends UserEntity> List<S> saveAll(Iterable<S> entities) {
+    public <S extends UserEntity> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<UserEntity> findById(Long aLong) {
+    public Optional<UserEntity> findById(Serializable serializable) {
         return Optional.empty();
     }
 
     @Override
-    public boolean existsById(Long aLong) {
+    public boolean existsById(Serializable serializable) {
         return false;
     }
 
     @Override
-    public List<UserEntity> findAll() {
+    public Iterable<UserEntity> findAll() {
         return null;
     }
 
     @Override
-    public List<UserEntity> findAllById(Iterable<Long> longs) {
+    public Iterable<UserEntity> findAllById(Iterable<Serializable> serializables) {
         return null;
     }
 
@@ -143,7 +59,7 @@ class DefaultApplicationRepository implements ApplicationRepository {
     }
 
     @Override
-    public void deleteById(Long aLong) {
+    public void deleteById(Serializable serializable) {
 
     }
 
@@ -153,7 +69,7 @@ class DefaultApplicationRepository implements ApplicationRepository {
     }
 
     @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
+    public void deleteAllById(Iterable<? extends Serializable> serializables) {
 
     }
 
@@ -165,15 +81,5 @@ class DefaultApplicationRepository implements ApplicationRepository {
     @Override
     public void deleteAll() {
 
-    }
-
-    @Override
-    public List<UserEntity> findAll(Sort sort) {
-        return null;
-    }
-
-    @Override
-    public Page<UserEntity> findAll(Pageable pageable) {
-        return null;
     }
 }

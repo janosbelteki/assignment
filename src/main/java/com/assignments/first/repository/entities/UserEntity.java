@@ -12,52 +12,81 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.sql.Timestamp;
 import java.util.List;
 
+import static com.assignments.first.common.Constants.USER_TABLE;
+
 @Entity
-@Table(name = "users")
+@Table(name = USER_TABLE)
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
 
-    @Column(nullable = false)
+    @Column(name = "first_name")
     public String firstName;
 
-    @Column(nullable = false)
+    @Column(name = "last_name")
     public String lastName;
 
-    @Column(nullable = false)
+    @Column(name = "age")
     public int age;
 
     @Enumerated(EnumType.STRING)
     public Gender gender;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    public List<Hobby> hobbies;
+    @OneToMany(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
+    @JoinColumn(name = "user_id",referencedColumnName="userId")
+    public List<Hobby> hobbies = null;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public List<Hobby> getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies) {
+        this.hobbies = hobbies;
+    }
 }
 
-@Entity
-@Table(name = "hobbies")
-class Hobby {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    public String name;
-
-    @Column(nullable = false)
-    public int duration;
-
-    @Column(name = "last_done")
-    public Timestamp lastDone;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
-}
