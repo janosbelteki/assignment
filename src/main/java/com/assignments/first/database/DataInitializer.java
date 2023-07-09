@@ -38,7 +38,8 @@ class DataInitializer {
 
     @PostConstruct
     public void initializeData() throws Exception {
-        Connection connection = DriverManager.getConnection(JDBC_URL);
+        Connection connection = DriverManager.getConnection(JDBC_URL, "sa", "ASD");
+        connection.setAutoCommit(true);
         int rowCount = checkIfDbHasData(connection);
         if (rowCount == 0) {
             logger.info("Loading data from from: " + USER_DATA_PATH);
@@ -51,17 +52,18 @@ class DataInitializer {
     }
 
     int checkIfDbHasData(Connection connection) throws Exception {
-        boolean usersTableExists = checkIfTableExistsInDb(connection, USER_TABLE);
-        if (!usersTableExists) {
-            createTable(connection, USER_TABLE);
-        }
         boolean hobbiesTableExists = checkIfTableExistsInDb(connection, HOBBY_TABLE);
         if (!hobbiesTableExists) {
-            createTable(connection, HOBBY_TABLE);
+            createHobbyTable(connection);
+        }
+        boolean usersTableExists = checkIfTableExistsInDb(connection, USER_TABLE);
+        if (!usersTableExists) {
+            createUserTable(connection);
         }
         String sql = "SELECT COUNT(*) FROM " + USER_TABLE;
-
         Statement statement = connection.createStatement();
+
+
         ResultSet resultSet = statement.executeQuery(sql);
         int rowCount = 0;
         if (resultSet.next()) {
@@ -81,14 +83,27 @@ class DataInitializer {
         }
     }
 
-    private static void createTable(Connection connection, String tableName) throws Exception {
-        String createTableQuery = "CREATE TABLE " + tableName + " (" +
-                "userId INT PRIMARY KEY, " +
+    private static void createUserTable(Connection connection) throws Exception {
+        String createTableQuery = "CREATE TABLE " + USER_TABLE + " (" +
+                "userId UUID DEFAULT RANDOM_UUID() PRIMARY KEY, " +
                 "firstName VARCHAR(255), " +
                 "lastName VARCHAR(255), " +
                 "age INT, " +
                 "gender VARCHAR(255), " +
-                "hobbies VARCHAR(255)" +
+                "hobbyId UUID, " +
+                "FOREIGN KEY (hobbyId) REFERENCES " + HOBBY_TABLE + "(hobbyId)" +
+                ")";
+        PreparedStatement statement = connection.prepareStatement(createTableQuery);
+        statement.execute();
+        statement.close();
+    }
+
+    private static void createHobbyTable(Connection connection) throws Exception {
+        String createTableQuery = "CREATE TABLE " + HOBBY_TABLE + " (" +
+                "hobbyId UUID DEFAULT CAST(RANDOM_UUID() AS VARCHAR(36)) PRIMARY KEY, " +
+                "name VARCHAR(255), " +
+                "duration INT, " +
+                "lastDone TIMESTAMP" +
                 ")";
         PreparedStatement statement = connection.prepareStatement(createTableQuery);
         statement.execute();

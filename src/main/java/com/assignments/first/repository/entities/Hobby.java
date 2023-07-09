@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import static com.assignments.first.common.Constants.HOBBY_TABLE;
 
@@ -14,8 +15,8 @@ import static com.assignments.first.common.Constants.HOBBY_TABLE;
 @Table(name = HOBBY_TABLE)
 public class Hobby {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long hobbyId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID hobbyId;
 
     @Column(name = "name")
     public String name;
@@ -26,19 +27,22 @@ public class Hobby {
     @Column(name = "last_done")
     public Timestamp lastDone;
 
-    public Long getHobbyId() {
-        return hobbyId;
-    }
+    public UUID getHobbyId() { return hobbyId; }
+    public void setHobbyId(UUID hobbyId) { this.hobbyId = hobbyId; }
 
-    public void setHobbyId(Long hobbyId) {
-        this.hobbyId = hobbyId;
-    }
-
-    public String getHobbyName() {
-        return name;
-    }
-
+    public String getHobbyName() { return name; }
     public void setHobbyName(String name) {
         this.name = name;
     }
+
+    public int getHobbyDuration() { return duration; }
+    public void setHobbyDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public Timestamp getHobbyLastDone() { return lastDone; }
+    public void setHobbyDuration(Timestamp lastDone) {
+        this.lastDone = lastDone;
+    }
+
 }

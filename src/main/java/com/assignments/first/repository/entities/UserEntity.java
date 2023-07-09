@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
+import java.util.UUID;
 
 import static com.assignments.first.common.Constants.USER_TABLE;
 
@@ -22,8 +23,8 @@ import static com.assignments.first.common.Constants.USER_TABLE;
 @Table(name = USER_TABLE)
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID userId;
 
     @Column(name = "first_name")
     public String firstName;
@@ -37,15 +38,15 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     public Gender gender;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch= FetchType.LAZY)
-    @JoinColumn(name = "user_id",referencedColumnName="userId")
-    public List<Hobby> hobbies = null;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "hobbyId")
+    private List<Hobby> hobbies = null;
 
-    public Long getUserId() {
+    public UUID getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(UUID userId) {
         this.userId = userId;
     }
 

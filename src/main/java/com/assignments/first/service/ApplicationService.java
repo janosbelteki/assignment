@@ -2,6 +2,7 @@ package com.assignments.first.service;
 
 import com.assignments.first.repository.ApplicationRepository;
 import com.assignments.first.repository.entities.UserEntity;
+import com.assignments.first.repository.entities.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -31,10 +35,10 @@ class DefaultApplicationService implements ApplicationService {
     @Autowired
     private ApplicationRepository applicationRepository;
 
-    public UserEntity saveUser(UserEntity userEntity) {
+    /*public UserEntity saveUser(UserEntity userEntity) {
         userEntity = applicationRepository.save(userEntity);
         return userEntity;
-    }
+    }*/
 
 
     @Override
@@ -46,9 +50,11 @@ class DefaultApplicationService implements ApplicationService {
 
     @Transactional
     public void saveUsers(List<UserEntity> users) {
-        try {
-            applicationRepository.saveAllAndFlush(users);
-            logger.info("User data saved successfully");
+        try (Connection connection = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "ASD");) {
+             applicationRepository.saveUsers(connection, users);
+             logger.info("User data saved successfully");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         } catch (Exception e) {
             logger.warn("DB error, rolling back...", e);
             e.printStackTrace();
