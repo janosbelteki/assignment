@@ -2,20 +2,17 @@ package com.assignments.first.repository.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.sql.Timestamp;
 
-import static com.assignments.first.common.Constants.HOBBIES_TABLE;
+import static com.assignments.first.common.Constants.HOBBY_TABLE;
 
 @Entity
-@Table(name = HOBBIES_TABLE)
-class Hobby {
+@Table(name = HOBBY_TABLE)
+public class Hobby {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long hobbyId;

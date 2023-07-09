@@ -1,58 +1,26 @@
-package com.assignments.first.service;
+package com.assignments.first.repository;
 
-import com.assignments.first.repository.ApplicationRepository;
 import com.assignments.first.repository.entities.UserEntity;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.FluentQuery;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public interface ApplicationService extends JpaRepository<UserEntity, Long> {
-    List<UserEntity> findUsers();
-    void saveUsers(List<UserEntity> users);
-}
-
-@Service
-class DefaultApplicationService implements ApplicationService {
-    //private final ApplicationRepository applicationRepository;
-    private final Logger logger = LoggerFactory.getLogger(ApplicationService.class);
-
-    @Autowired
-    private ApplicationRepository applicationRepository;
-
-    public UserEntity saveUser(UserEntity userEntity) {
-        userEntity = applicationRepository.save(userEntity);
-        return userEntity;
-    }
-
-
+@Repository
+public class DefaultApplicationRepository implements ApplicationRepository {
     @Override
     public List<UserEntity> findUsers() {
-        // TODO: Implement the userRegistration method
-
-        return applicationRepository.findUsers();
-    }
-
-    @Transactional
-    public void saveUsers(List<UserEntity> users) {
-        try {
-            applicationRepository.saveAllAndFlush(users);
-            logger.info("User data saved successfully");
-        } catch (Exception e) {
-            logger.warn("DB error, rolling back...", e);
-            e.printStackTrace();
-        }
+        // TODO: Implement the findUsers method
+        List<UserEntity> returnValue = new ArrayList<>();
+        return returnValue;
     }
 
     @Override
@@ -76,7 +44,7 @@ class DefaultApplicationService implements ApplicationService {
     }
 
     @Override
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
+    public void deleteAllByIdInBatch(Iterable<Serializable> serializables) {
 
     }
 
@@ -86,17 +54,17 @@ class DefaultApplicationService implements ApplicationService {
     }
 
     @Override
-    public UserEntity getOne(Long aLong) {
+    public UserEntity getOne(Serializable serializable) {
         return null;
     }
 
     @Override
-    public UserEntity getById(Long aLong) {
+    public UserEntity getById(Serializable serializable) {
         return null;
     }
 
     @Override
-    public UserEntity getReferenceById(Long aLong) {
+    public UserEntity getReferenceById(Serializable serializable) {
         return null;
     }
 
@@ -146,12 +114,12 @@ class DefaultApplicationService implements ApplicationService {
     }
 
     @Override
-    public Optional<UserEntity> findById(Long aLong) {
+    public Optional<UserEntity> findById(Serializable serializable) {
         return Optional.empty();
     }
 
     @Override
-    public boolean existsById(Long aLong) {
+    public boolean existsById(Serializable serializable) {
         return false;
     }
 
@@ -161,7 +129,7 @@ class DefaultApplicationService implements ApplicationService {
     }
 
     @Override
-    public List<UserEntity> findAllById(Iterable<Long> longs) {
+    public List<UserEntity> findAllById(Iterable<Serializable> serializables) {
         return null;
     }
 
@@ -171,7 +139,7 @@ class DefaultApplicationService implements ApplicationService {
     }
 
     @Override
-    public void deleteById(Long aLong) {
+    public void deleteById(Serializable serializable) {
 
     }
 
@@ -181,7 +149,7 @@ class DefaultApplicationService implements ApplicationService {
     }
 
     @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
+    public void deleteAllById(Iterable<? extends Serializable> serializables) {
 
     }
 

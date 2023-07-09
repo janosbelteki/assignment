@@ -21,6 +21,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import static com.assignments.first.common.Constants.HOBBY_TABLE;
 import static com.assignments.first.common.Constants.JDBC_URL;
 import static com.assignments.first.common.Constants.USER_DATA_PATH;
 import static com.assignments.first.common.Constants.USER_TABLE;
@@ -49,10 +50,14 @@ class DataInitializer {
         }
     }
 
-    private int checkIfDbHasData(Connection connection) throws Exception {
-        boolean tableExists = checkIfTableExistsInDb(connection);
-        if (!tableExists) {
-            createTable(connection);
+    int checkIfDbHasData(Connection connection) throws Exception {
+        boolean usersTableExists = checkIfTableExistsInDb(connection, USER_TABLE);
+        if (!usersTableExists) {
+            createTable(connection, USER_TABLE);
+        }
+        boolean hobbiesTableExists = checkIfTableExistsInDb(connection, HOBBY_TABLE);
+        if (!hobbiesTableExists) {
+            createTable(connection, HOBBY_TABLE);
         }
         String sql = "SELECT COUNT(*) FROM " + USER_TABLE;
 
@@ -65,10 +70,10 @@ class DataInitializer {
         return rowCount;
     }
 
-    private boolean checkIfTableExistsInDb(Connection connection) {
+    private boolean checkIfTableExistsInDb(Connection connection, String tableName) {
         try {
             DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet resultSet = metaData.getTables(null, null, USER_TABLE, null);
+            ResultSet resultSet = metaData.getTables(null, null, tableName, null);
             return resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,8 +81,8 @@ class DataInitializer {
         }
     }
 
-    private static void createTable(Connection connection) throws Exception {
-        String createTableQuery = "CREATE TABLE USER_TABLE (" +
+    private static void createTable(Connection connection, String tableName) throws Exception {
+        String createTableQuery = "CREATE TABLE " + tableName + " (" +
                 "userId INT PRIMARY KEY, " +
                 "firstName VARCHAR(255), " +
                 "lastName VARCHAR(255), " +
