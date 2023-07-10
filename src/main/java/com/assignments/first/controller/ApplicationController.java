@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import static com.assignments.first.common.Constants.API_PATH;
@@ -30,10 +31,10 @@ public class ApplicationController extends AssignmentExceptionHandler {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UserEntity>> getUsers(
-    ) {
-        logger.info("Find users types");
-        List<UserEntity> users = applicationService.findUsers();
-        return ResponseEntity.ok().body(users);
+    ) throws SQLException {
+        logger.info("Getting all users");
+        //List<UserEntity> users = applicationService.getUsers();
+        return ResponseEntity.ok().body(null);//.body(users);
     }
 
 

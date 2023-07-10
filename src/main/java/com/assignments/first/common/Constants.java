@@ -7,6 +7,8 @@ public class Constants {
 
     // DB
     public static final String JDBC_URL = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1";
+    public static final String ADMIN_USER = "admin";
+    public static final String ADMIN_PASSWORD = "admin123";
     public static final String USER_TABLE = "users";
     public static final String HOBBY_TABLE = "hobbies";
 

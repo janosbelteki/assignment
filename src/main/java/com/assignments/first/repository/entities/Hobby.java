@@ -1,11 +1,10 @@
 package com.assignments.first.repository.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -15,8 +14,9 @@ import static com.assignments.first.common.Constants.HOBBY_TABLE;
 @Table(name = HOBBY_TABLE)
 public class Hobby {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID hobbyId;
+    @GeneratedValue
+    @Column(columnDefinition = "uuid", updatable = false)
+    private UUID userId;
 
     @Column(name = "name")
     public String name;
@@ -27,8 +27,8 @@ public class Hobby {
     @Column(name = "last_done")
     public Timestamp lastDone;
 
-    public UUID getHobbyId() { return hobbyId; }
-    public void setHobbyId(UUID hobbyId) { this.hobbyId = hobbyId; }
+    public UUID getUserId() { return userId; }
+    public void setUserId(UUID userId) { this.userId = userId; }
 
     public String getHobbyName() { return name; }
     public void setHobbyName(String name) {
@@ -41,7 +41,7 @@ public class Hobby {
     }
 
     public Timestamp getHobbyLastDone() { return lastDone; }
-    public void setHobbyDuration(Timestamp lastDone) {
+    public void setHobbyLastDone(Timestamp lastDone) {
         this.lastDone = lastDone;
     }
 
