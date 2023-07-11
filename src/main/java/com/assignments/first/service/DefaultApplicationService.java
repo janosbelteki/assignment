@@ -1,5 +1,7 @@
 package com.assignments.first.service;
 
+import com.assignments.first.common.PagingConfig;
+import com.assignments.first.controller.dtos.responses.UserResponse;
 import com.assignments.first.repository.ApplicationRepository;
 import com.assignments.first.repository.entities.UserEntity;
 import org.slf4j.Logger;
@@ -7,53 +9,45 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
-import static com.assignments.first.common.Constants.ADMIN_PASSWORD;
-import static com.assignments.first.common.Constants.ADMIN_USER;
+import static com.assignments.first.common.Constants.ORDER_ASC;
 
 @Service
 class DefaultApplicationService implements ApplicationService {
-    //private final ApplicationRepository applicationRepository;
-    private final Logger logger = LoggerFactory.getLogger(ApplicationService.class);
-
     @Autowired
     private ApplicationRepository applicationRepository;
 
-    /*public UserEntity saveUser(UserEntity userEntity) {
-        userEntity = applicationRepository.save(userEntity);
-        return userEntity;
-    }*/
+    @Override
+    public UserResponse getUsers(List<String> userIds, PagingConfig pagingConfig) {
+        List<UUID> uuidList = userIds.stream()
+                .map(UUID::fromString)
+                .collect(Collectors.toList());
 
+        Sort sort = switch (pagingConfig.getOrder()) {
+            case ORDER_ASC -> Sort.by(pagingConfig.getOrderBy()).ascending();
+            default -> Sort.by(pagingConfig.getOrderBy()).descending();
+        };
+        Pageable pageable = PageRequest.of(pagingConfig.getPageIndex(), pagingConfig.getPageLimit(), sort);
 
-    /*@Override
-    public List<UserEntity> getUsers() throws SQLException {
-        return applicationRepository.getUsers();
-    }*/
-
-    /*@Transactional
-    public void saveUsers(List<UserEntity> users) {
-        try (Connection connection = DriverManager.getConnection("jdbc:h2:mem:testdb", ADMIN_USER, ADMIN_PASSWORD)) {
-            applicationRepository.saveAll(users);
-            logger.info("User data saved successfully");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (Exception e) {
-            logger.warn("DB error, rolling back...", e);
-            e.printStackTrace();
+        if (CollectionUtils.isEmpty(uuidList)) {
+            return new UserResponse(applicationRepository.findAll(pageable).getContent());
+        } else {
+            return new UserResponse(applicationRepository.findByUserIdIn(uuidList, pageable).getContent());
         }
-    }*/
+    }
 
     @Override
     public void saveUsers(List<UserEntity> users) {

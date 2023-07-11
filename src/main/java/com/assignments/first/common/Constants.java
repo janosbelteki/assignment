@@ -5,6 +5,13 @@ public class Constants {
     public static final String API_PATH = "/api";
     public static final String API_USER = "/users";
 
+    // Endpoint paging
+    public static final String DEFAULT_PAGE_LIMIT = "10";
+    public static final String DEFAULT_PAGE_INDEX = "0";
+    public static final String ORDER_ASC = "ASC";
+    public static final String ORDER_DESC = "DESC";
+    public static final String USER_LIST_DEFAULT_ORDER_BY = "lastName";
+
     // DB
     public static final String JDBC_URL = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1";
     public static final String ADMIN_USER = "admin";
@@ -14,4 +21,8 @@ public class Constants {
 
     // Resource
     public static final String USER_DATA_PATH = "user_data/user_data.json";
+
+    // Error labels
+    public static final String INVALID_PAGE_LIMIT_ERROR_LABEL = "invalid_page_limit_error_label";
+    public static final String INVALID_PAGE_INDEX_ERROR_LABEL = "invalid_page_index_error_label";
 }
