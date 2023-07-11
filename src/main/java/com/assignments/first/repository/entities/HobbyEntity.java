@@ -15,7 +15,7 @@ import static com.assignments.first.common.Constants.HOBBY_TABLE;
 public class HobbyEntity {
     @Id
     @GeneratedValue
-    @Column(columnDefinition = "uuid", updatable = false)
+    @Column(name = "userId", columnDefinition = "uuid", updatable = false)
     private UUID userId;
 
     @Column(name = "name")

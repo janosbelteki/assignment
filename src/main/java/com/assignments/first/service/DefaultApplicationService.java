@@ -11,6 +11,7 @@ import com.assignments.first.repository.HobbyRepository;
 import com.assignments.first.repository.UserRepository;
 import com.assignments.first.repository.entities.HobbyEntity;
 import com.assignments.first.repository.entities.UserEntity;
+import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -134,7 +135,9 @@ class DefaultApplicationService implements ApplicationService {
             List<Predicate> predicates = new ArrayList<>();
 
             if (search != null) {
-                predicates.add(criteriaBuilder.like(root.get("name"), "%" + search + "%"));
+                Expression<String> nameExpression = criteriaBuilder.upper(root.get("name"));
+                String searchValue = "%" + search.toUpperCase() + "%";
+                predicates.add(criteriaBuilder.like(nameExpression, searchValue));
             }
             if (startDate != null) {
                 predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("lastDone"), startDate));
