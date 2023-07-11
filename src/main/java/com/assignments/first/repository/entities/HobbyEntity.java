@@ -12,7 +12,7 @@ import static com.assignments.first.common.Constants.HOBBY_TABLE;
 
 @Entity
 @Table(name = HOBBY_TABLE)
-public class Hobby {
+public class HobbyEntity {
     @Id
     @GeneratedValue
     @Column(columnDefinition = "uuid", updatable = false)

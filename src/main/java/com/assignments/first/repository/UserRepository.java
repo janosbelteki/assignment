@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-public interface ApplicationRepository extends JpaRepository<UserEntity, UUID> {
+public interface UserRepository extends JpaRepository<UserEntity, UUID> {
     Page<UserEntity> findByUserIdIn(List<UUID> userIds, Pageable pageable);
 }
 

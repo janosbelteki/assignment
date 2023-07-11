@@ -1,5 +1,6 @@
 package com.assignments.first.repository;
 
+import com.assignments.first.repository.entities.HobbyEntity;
 import com.assignments.first.repository.entities.UserEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -10,13 +11,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
 
 @Repository
-public class DefaultApplicationRepository implements ApplicationRepository {
+public class DefaultUserRepository implements UserRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -160,12 +162,10 @@ public class DefaultApplicationRepository implements ApplicationRepository {
 
     }
 
-    @Override
     public List<UserEntity> findAll(Sort sort) {
         return null;
     }
 
-    @Override
     public Page<UserEntity> findAll(Pageable pageable) {
         return null;
     }

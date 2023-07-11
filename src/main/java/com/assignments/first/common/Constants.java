@@ -11,6 +11,7 @@ public class Constants {
     public static final String ORDER_ASC = "ASC";
     public static final String ORDER_DESC = "DESC";
     public static final String USER_LIST_DEFAULT_ORDER_BY = "lastName";
+    public static final String HOBBY_LIST_DEFAULT_ORDER_BY = "name";
 
     // DB
     public static final String JDBC_URL = "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1";
@@ -25,4 +26,5 @@ public class Constants {
     // Error labels
     public static final String INVALID_PAGE_LIMIT_ERROR_LABEL = "invalid_page_limit_error_label";
     public static final String INVALID_PAGE_INDEX_ERROR_LABEL = "invalid_page_index_error_label";
+    public static final String INVALID_GENDER_ERROR_LABEL = "invalid_gender_error_label";
 }

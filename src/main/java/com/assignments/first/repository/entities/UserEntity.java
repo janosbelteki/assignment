@@ -11,12 +11,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
 import static com.assignments.first.common.Constants.USER_TABLE;
 
+@NoArgsConstructor
 @Entity
 @Table(name = USER_TABLE)
 public class UserEntity {
@@ -39,7 +41,15 @@ public class UserEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "hobbyId")
-    private List<Hobby> hobbies = null;
+    private List<HobbyEntity> hobbies = null;
+
+    public UserEntity(String firstName, String lastName, int age, Gender gender, List<HobbyEntity> hobbies) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.gender = gender;
+        this.hobbies = hobbies;
+    }
 
     public UUID getUserId() {
         return userId;
@@ -81,11 +91,11 @@ public class UserEntity {
         this.gender = gender;
     }
 
-    public List<Hobby> getHobbies() {
+    public List<HobbyEntity> getHobbies() {
         return hobbies;
     }
 
-    public void setHobbies(List<Hobby> hobbies) {
+    public void setHobbies(List<HobbyEntity> hobbies) {
         this.hobbies = hobbies;
     }
 }

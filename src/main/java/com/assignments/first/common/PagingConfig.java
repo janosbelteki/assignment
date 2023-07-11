@@ -69,9 +69,9 @@ public class PagingConfig {
         return ORDER_ASC;
     }
 
-    public static String getCorrectOrderBy(String orderBy) {
+    public static String getCorrectOrderBy(String orderBy, String defaultOrderBy) {
         Field[] fields = UserEntity.class.getDeclaredFields();
-        String correctOrderBy = USER_LIST_DEFAULT_ORDER_BY;
+        String correctOrderBy = defaultOrderBy;
         for (Field field : fields) {
             String fieldName = field.getName();
             if (orderBy.toLowerCase().equals(fieldName)) {
