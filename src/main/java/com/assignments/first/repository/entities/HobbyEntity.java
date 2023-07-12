@@ -30,21 +30,27 @@ public class HobbyEntity {
     @Column(name = "userId")
     private UUID userId;
 
+    public HobbyEntity() {
+    }
+
+    public HobbyEntity(String name, int duration, String lastDone) {
+    }
+
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 
     public String getName() { return name; }
-    public void setHobbyName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
     public int getDuration() { return duration; }
-    public void setHobbyDuration(int duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
     public Timestamp getLastDone() { return lastDone; }
-    public void setHobbyLastDone(Timestamp lastDone) {
+    public void setLastDone(Timestamp lastDone) {
         this.lastDone = lastDone;
     }
 }

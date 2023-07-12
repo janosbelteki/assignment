@@ -27,13 +27,17 @@ import static com.assignments.first.common.Constants.USER_DATA_PATH;
 import static com.assignments.first.common.Constants.USER_TABLE;
 
 @Component
-class DataInitializer {
-    private final ApplicationService applicationService;
+public class DataInitializer {
+    private ApplicationService applicationService;
     private static final Logger logger = LoggerFactory.getLogger(DataInitializer.class);
 
     @Autowired
     public DataInitializer(ApplicationService applicationService) {
         this.applicationService = applicationService;
+    }
+
+    public DataInitializer() {
+
     }
 
     @PostConstruct
