@@ -34,6 +34,9 @@ public class HobbyEntity {
     }
 
     public HobbyEntity(String name, int duration, String lastDone) {
+        this.name = name;
+        this.duration = duration;
+        this.lastDone = Timestamp.valueOf(lastDone);
     }
 
     public UUID getId() { return id; }
