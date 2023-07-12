@@ -1,6 +1,5 @@
 package com.assignments.first.database;
 
-import com.assignments.first.repository.entities.HobbyEntity;
 import com.assignments.first.repository.entities.UserEntity;
 import com.assignments.first.service.ApplicationService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -18,7 +17,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.assignments.first.common.Constants.ADMIN_PASSWORD;
@@ -49,13 +47,6 @@ class DataInitializer {
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream(USER_DATA_PATH);
             List<UserEntity> users = objectMapper.readValue(inputStream, new TypeReference<>() {});
 
-            /*for (UserEntity user : users) {
-                List<HobbyEntity> hobbies = new ArrayList<>(user.getHobbies());
-                for (HobbyEntity hobby : hobbies) {
-                    hobby.setUser(user);
-                }
-                user.setHobbies(hobbies);
-            }*/
             applicationService.saveUsers(users);
         }
     }
@@ -83,7 +74,6 @@ class DataInitializer {
                 "lastName VARCHAR(255), " +
                 "age INT, " +
                 "gender VARCHAR(255), " +
-                //"hobbyId UUID, " +
                 "FOREIGN KEY (id) REFERENCES " + HOBBY_TABLE + "(id)" +
                 ")";
         PreparedStatement statement = connection.prepareStatement(createTableQuery);
@@ -97,7 +87,6 @@ class DataInitializer {
                 "name VARCHAR(255), " +
                 "duration INT, " +
                 "lastDone TIMESTAMP, " +
-                //"userId UUID, " +
                 "FOREIGN KEY (id) REFERENCES " + USER_TABLE + "(id)" +
                 ")";
         PreparedStatement statement = connection.prepareStatement(createTableQuery);
