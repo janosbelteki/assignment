@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -24,8 +25,8 @@ import static com.assignments.first.common.Constants.USER_TABLE;
 public class UserEntity {
     @Id
     @GeneratedValue
-    @Column(columnDefinition = "uuid", updatable = false)
-    private UUID userId;
+    @Column(name = "id", columnDefinition = "uuid", updatable = false)
+    private UUID id;
 
     @Column(name = "first_name")
     public String firstName;
@@ -40,8 +41,8 @@ public class UserEntity {
     public Gender gender;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "hobbyId")
-    private List<HobbyEntity> hobbies = null;
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private List<HobbyEntity> hobbies;
 
     public UserEntity(String firstName, String lastName, int age, Gender gender, List<HobbyEntity> hobbies) {
         this.firstName = firstName;
@@ -51,12 +52,12 @@ public class UserEntity {
         this.hobbies = hobbies;
     }
 
-    public UUID getUserId() {
-        return userId;
+    public UUID getId() {
+        return id;
     }
 
-    public void setUserId(UUID userId) {
-        this.userId = userId;
+    public void setId(UUID userId) {
+        this.id = userId;
     }
 
     public String getFirstName() {

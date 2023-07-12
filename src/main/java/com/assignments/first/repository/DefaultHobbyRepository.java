@@ -8,18 +8,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.FluentQuery;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
-
-import static com.assignments.first.common.Constants.HOBBY_TABLE;
 
 @Repository
 public class DefaultHobbyRepository implements HobbyRepository {
@@ -177,12 +172,12 @@ public class DefaultHobbyRepository implements HobbyRepository {
     }
 
     @Override
-    public Page<HobbyEntity> findByNameContainingAndLastDoneBetweenAndUserIdIn(String search, Timestamp startDate, Timestamp endDate, List<UUID> userIds, Pageable pageable) {
+    public Page<HobbyEntity> findAll(Specification<HobbyEntity> specification, Pageable pageable) {
         return null;
     }
 
     @Override
-    public Page<HobbyEntity> findAll(Specification<HobbyEntity> specification, Pageable pageable) {
+    public List<HobbyEntity> findByUserId(UUID userId) {
         return null;
     }
 }

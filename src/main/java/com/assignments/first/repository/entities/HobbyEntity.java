@@ -15,8 +15,8 @@ import static com.assignments.first.common.Constants.HOBBY_TABLE;
 public class HobbyEntity {
     @Id
     @GeneratedValue
-    @Column(name = "userId", columnDefinition = "uuid", updatable = false)
-    private UUID userId;
+    @Column(columnDefinition = "uuid", updatable = false)
+    private UUID id;
 
     @Column(name = "name")
     public String name;
@@ -27,22 +27,24 @@ public class HobbyEntity {
     @Column(name = "last_done")
     public Timestamp lastDone;
 
-    public UUID getUserId() { return userId; }
-    public void setUserId(UUID userId) { this.userId = userId; }
+    @Column(name = "userId")
+    private UUID userId;
 
-    public String getHobbyName() { return name; }
+    public UUID getId() { return id; }
+    public void setId(UUID id) { this.id = id; }
+
+    public String getName() { return name; }
     public void setHobbyName(String name) {
         this.name = name;
     }
 
-    public int getHobbyDuration() { return duration; }
+    public int getDuration() { return duration; }
     public void setHobbyDuration(int duration) {
         this.duration = duration;
     }
 
-    public Timestamp getHobbyLastDone() { return lastDone; }
+    public Timestamp getLastDone() { return lastDone; }
     public void setHobbyLastDone(Timestamp lastDone) {
         this.lastDone = lastDone;
     }
-
 }

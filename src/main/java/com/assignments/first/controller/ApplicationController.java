@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,7 +72,6 @@ public class ApplicationController extends AssignmentExceptionHandler {
             @RequestBody CreateUsersRequest createUserRequest
     ) {
         logger.info("Create new user(s), createUserRequest: " + createUserRequest);
-
         CreateUserResponse createUserResponse = applicationService.createUsers(createUserRequest);
         return ResponseEntity.ok().body(createUserResponse);
     }
@@ -94,9 +94,17 @@ public class ApplicationController extends AssignmentExceptionHandler {
                 getCorrectOrderBy(orderBy, HOBBY_LIST_DEFAULT_ORDER_BY)
         );
         FilterParams filterParams = new FilterParams(search, startDate, endDate, userIds);
-
-        logger.info("Getting hobbies, filterParams: " + filterParams + ", pagingConfig: " + pagingConfig);
+        logger.info("Get hobbies, filterParams: " + filterParams + ", pagingConfig: " + pagingConfig);
         HobbyResponse hobbyResponse = applicationService.getHobbies(filterParams, pagingConfig);
+        return ResponseEntity.ok().body(hobbyResponse);
+    }
+
+    @GetMapping(value = "/{userId}/hobbies", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<HobbyResponse> getUserHobbies(
+            @PathVariable("userId") String userId
+    ) {
+        logger.info("Get hobbies for user, userId: " + userId);
+        HobbyResponse hobbyResponse = applicationService.getUserHobbies(userId);
         return ResponseEntity.ok().body(hobbyResponse);
     }
 }

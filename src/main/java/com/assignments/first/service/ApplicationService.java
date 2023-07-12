@@ -17,5 +17,6 @@ public interface ApplicationService extends JpaRepository<UserEntity, Long> {
     UserResponse getUsers(List<String> userIds, PagingConfig pagingConfig) throws SQLException;
     CreateUserResponse createUsers(CreateUsersRequest createUsersRequest);
     HobbyResponse getHobbies(FilterParams filterParams, PagingConfig pagingConfig);
+    HobbyResponse getUserHobbies(String userId);
 }
 

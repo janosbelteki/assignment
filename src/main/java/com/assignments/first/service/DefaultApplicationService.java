@@ -13,7 +13,6 @@ import com.assignments.first.repository.entities.HobbyEntity;
 import com.assignments.first.repository.entities.UserEntity;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,7 +27,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -40,11 +38,13 @@ import static org.hibernate.internal.util.collections.CollectionHelper.listOf;
 
 @Service
 class DefaultApplicationService implements ApplicationService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final HobbyRepository hobbyRepository;
 
-    @Autowired
-    private HobbyRepository hobbyRepository;
+    public DefaultApplicationService(UserRepository userRepository, HobbyRepository hobbyRepository) {
+        this.userRepository = userRepository;
+        this.hobbyRepository = hobbyRepository;
+    }
 
     @Override
     public void saveUsers(List<UserEntity> users) {
@@ -60,7 +60,7 @@ class DefaultApplicationService implements ApplicationService {
         if (CollectionUtils.isEmpty(uuidList)) {
             return new UserResponse(userRepository.findAll(pageable).getContent());
         } else {
-            return new UserResponse(userRepository.findByUserIdIn(uuidList, pageable).getContent());
+            return new UserResponse(userRepository.findByIdIn(uuidList, pageable).getContent());
         }
     }
 
@@ -75,33 +75,11 @@ class DefaultApplicationService implements ApplicationService {
 
         List<String> userIds = new ArrayList<>();
         for (UserEntity userEntity : savedEntities) {
-            UUID userId = userEntity.getUserId();
+            UUID userId = userEntity.getId();
             userIds.add(userId.toString());
         }
         return new CreateUserResponse(userIds);
     }
-
-    /*@Override
-    public HobbyResponse getHobbies(FilterParams filterParams, PagingConfig pagingConfig) {
-        Optional<String> search = filterParams.getSearch();
-        Optional<Timestamp> startDate = filterParams.getStartDate();
-        Optional<Timestamp> endDate = filterParams.getEndDate();
-        Optional<List<String>> userIds = filterParams.getUserIds();
-        List<UUID> userUuidList = convertIds(userIds.orElse(Collections.emptyList()));
-
-        Sort sort = getSort(pagingConfig);
-        Pageable pageable = PageRequest.of(pagingConfig.getPageIndex(), pagingConfig.getPageLimit(), sort);
-
-        return new HobbyResponse(
-                hobbyRepository.findByNameContainingAndLastDoneBetweenAndUserIdIn(
-                        search,
-                        startDate,
-                        endDate,
-                        userUuidList,
-                        pageable
-                ).getContent()
-        );
-    }*/
 
     public HobbyResponse getHobbies(FilterParams filterParams, PagingConfig pagingConfig) {
         Optional<String> search = filterParams.getSearch();
@@ -122,6 +100,11 @@ class DefaultApplicationService implements ApplicationService {
 
         Page<HobbyEntity> hobbies = hobbyRepository.findAll(specification, pageable);
         return new HobbyResponse(hobbies.getContent());
+    }
+
+    public HobbyResponse getUserHobbies(String userId) {
+        UUID uuid = convertIds(listOf(userId)).get(0);
+        return new HobbyResponse(hobbyRepository.findByUserId(uuid));
     }
 
     private Specification<HobbyEntity> buildSpecification(

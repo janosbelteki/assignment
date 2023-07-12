@@ -10,7 +10,7 @@ import java.util.UUID;
 
 
 public interface UserRepository extends JpaRepository<UserEntity, UUID> {
-    Page<UserEntity> findByUserIdIn(List<UUID> userIds, Pageable pageable);
+    Page<UserEntity> findByIdIn(List<UUID> userIds, Pageable pageable);
 }
 
 

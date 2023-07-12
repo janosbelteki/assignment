@@ -171,7 +171,7 @@ public class DefaultUserRepository implements UserRepository {
     }
 
     @Override
-    public Page<UserEntity> findByUserIdIn(List<UUID> userIds, Pageable pageable) {
+    public Page<UserEntity> findByIdIn(List<UUID> userIds, Pageable pageable) {
         return null;
     }
 }
