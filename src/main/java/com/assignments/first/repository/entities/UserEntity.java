@@ -11,14 +11,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
 import static com.assignments.first.common.Constants.USER_TABLE;
 
-@NoArgsConstructor
 @Entity
 @Table(name = USER_TABLE)
 public class UserEntity {

@@ -5,7 +5,7 @@ import com.assignments.first.repository.entities.UserEntity;
 import java.util.List;
 
 public class UserResponse {
-    List<UserEntity> users;
+    private final List<UserEntity> users;
 
     public UserResponse(List<UserEntity> users) {
         this.users = users;

@@ -2,34 +2,48 @@ package com.assignments.first.common;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class FilterParams {
-    Optional<String> search;
-    Optional<Timestamp> startDate;
-    Optional<Timestamp> endDate;
-    Optional<List<String>> userIds;
 
-    public FilterParams(String search, Timestamp startDate, Timestamp endDate, List<String> userIds) {
-        this.search = Optional.ofNullable(search);
-        this.startDate = Optional.ofNullable(startDate);
-        this.endDate = Optional.ofNullable(endDate);
-        this.userIds = Optional.ofNullable(userIds);
-    }
+    private String search;
+    private Timestamp startDate;
+    private Timestamp endDate;
+    private List<String> userIds;
 
-    public Optional<String> getSearch() {
+    // If there are more than 8 parameters use builder instead
+
+    public String getSearch() {
         return search;
     }
 
-    public Optional<Timestamp> getStartDate() {
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    public Timestamp getStartDate() {
         return startDate;
     }
 
-    public Optional<Timestamp> getEndDate() {
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    public Timestamp getEndDate() {
         return endDate;
     }
 
-    public Optional<List<String>> getUserIds() {
+    public void setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
+    }
+
+    public List<String> getUserIds() {
         return userIds;
     }
+
+    public void setUserIds(List<String> userIds) {
+        this.userIds = userIds;
+    }
+
 }

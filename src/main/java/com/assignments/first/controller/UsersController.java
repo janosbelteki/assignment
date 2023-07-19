@@ -7,9 +7,10 @@ import com.assignments.first.controller.dtos.responses.CreateUserResponse;
 import com.assignments.first.controller.dtos.responses.HobbyResponse;
 import com.assignments.first.controller.dtos.responses.UserResponse;
 import com.assignments.first.exceptions.AssignmentExceptionHandler;
-import com.assignments.first.service.ApplicationService;
+import com.assignments.first.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,8 +26,6 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 
-import static com.assignments.first.common.Constants.API_PATH;
-import static com.assignments.first.common.Constants.API_USER;
 import static com.assignments.first.common.Constants.DEFAULT_PAGE_INDEX;
 import static com.assignments.first.common.Constants.DEFAULT_PAGE_LIMIT;
 import static com.assignments.first.common.Constants.HOBBY_LIST_DEFAULT_ORDER_BY;
@@ -39,13 +38,15 @@ import static com.assignments.first.common.PagingConfig.getCorrectOrderBy;
 
 @RestController
 @Validated
-@RequestMapping(API_PATH + API_USER)
-public class ApplicationController extends AssignmentExceptionHandler {
-    private static final Logger logger = LoggerFactory.getLogger(ApplicationController.class);
-    private final ApplicationService applicationService;
+@RequestMapping("/api/users")
+public class UsersController extends AssignmentExceptionHandler {
 
-    public ApplicationController(ApplicationService applicationService) {
-        this.applicationService = applicationService;
+    private static final Logger logger = LoggerFactory.getLogger(UsersController.class);
+    private final UserService userService;
+
+    @Autowired
+    public UsersController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -63,16 +64,14 @@ public class ApplicationController extends AssignmentExceptionHandler {
                 getCorrectOrderBy(orderBy, USER_LIST_DEFAULT_ORDER_BY)
         );
         logger.info("Getting users, userIds: " + userIds + ", pagingConfig: " + pagingConfig);
-        UserResponse userResponse = applicationService.getUsers(userIds, pagingConfig);
+        UserResponse userResponse = userService.getUsers(userIds, pagingConfig);
         return ResponseEntity.ok().body(userResponse);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<CreateUserResponse> createUsers(
-            @RequestBody CreateUsersRequest createUserRequest
-    ) {
+    public ResponseEntity<CreateUserResponse> createUsers(@RequestBody CreateUsersRequest createUserRequest) {
         logger.info("Create new user(s), createUserRequest: " + createUserRequest);
-        CreateUserResponse createUserResponse = applicationService.createUsers(createUserRequest);
+        CreateUserResponse createUserResponse = userService.createUsers(createUserRequest);
         return ResponseEntity.ok().body(createUserResponse);
     }
 
@@ -93,18 +92,16 @@ public class ApplicationController extends AssignmentExceptionHandler {
                 getCorrectOrder(order),
                 getCorrectOrderBy(orderBy, HOBBY_LIST_DEFAULT_ORDER_BY)
         );
-        FilterParams filterParams = new FilterParams(search, startDate, endDate, userIds);
+        final FilterParams filterParams = new FilterParams(search, startDate, endDate, userIds);
         logger.info("Get hobbies, filterParams: " + filterParams + ", pagingConfig: " + pagingConfig);
-        HobbyResponse hobbyResponse = applicationService.getHobbies(filterParams, pagingConfig);
-        return ResponseEntity.ok().body(hobbyResponse);
+        final HobbyResponse hobbyResponse = userService.getHobbies(filterParams, pagingConfig);
+        return ResponseEntity.ok().contentLength(10).contentType(MediaType.APPLICATION_JSON).body(hobbyResponse);
     }
 
     @GetMapping(value = "/{userId}/hobbies", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<HobbyResponse> getUserHobbies(
-            @PathVariable("userId") String userId
-    ) {
+    public ResponseEntity<HobbyResponse> getUserHobbies(@PathVariable("userId") String userId) {
         logger.info("Get hobbies for user, userId: " + userId);
-        HobbyResponse hobbyResponse = applicationService.getUserHobbies(userId);
+        HobbyResponse hobbyResponse = userService.getUserHobbies(userId);
         return ResponseEntity.ok().body(hobbyResponse);
     }
 }

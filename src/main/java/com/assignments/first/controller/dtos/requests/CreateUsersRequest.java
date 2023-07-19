@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.List;
 
 public class CreateUsersRequest {
-    List<UserData> userData;
+    List<UserDataRestResponse> userDatumRestResponses;
 
     @JsonCreator
-    public CreateUsersRequest(List<UserData> userData) { this.userData = userData; }
+    public CreateUsersRequest(List<UserDataRestResponse> userDatumRestResponses) { this.userDatumRestResponses = userDatumRestResponses; }
 
-    public List<UserData> getUserData() { return userData; }
+    public List<UserDataRestResponse> getUserData() { return userDatumRestResponses; }
 }
 

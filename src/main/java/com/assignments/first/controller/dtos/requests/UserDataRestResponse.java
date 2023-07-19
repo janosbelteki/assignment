@@ -11,28 +11,29 @@ import java.util.List;
 
 import static com.assignments.first.common.Constants.INVALID_GENDER_ERROR_LABEL;
 
-public class UserData {
-    String firstName;
+public class UserDataRestResponse {
+    private final String firstName;
     String lastName;
     int age;
     String gender;
     List<HobbyEntity> hobbies;
 
-    public UserData(String firstName, String lastName, int age, String gender, List<HobbyEntity> hobbies) {
+    public UserDataRestResponse(String firstName, String lastName, int age, String gender, List<HobbyEntity> hobbies) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.gender = gender;
         this.hobbies = hobbies;
     }
-
+    // TODO: move to the entity itself
     public UserEntity toUserEntity() {
         Gender validGender = Arrays.stream(Gender.values())
-                .filter(it -> it.name.equals(gender))
+                .filter(it -> it.getName().equals(gender))
                 .findFirst()
                 .orElseThrow(() -> new AssignmentException(INVALID_GENDER_ERROR_LABEL, HttpStatus.BAD_REQUEST));
         return new UserEntity(firstName, lastName, age, validGender, hobbies);
     }
+
     public String getFirstName() { return firstName; }
 
     public String getLastName() { return lastName; }

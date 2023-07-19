@@ -6,25 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AssignmentException extends RuntimeException {
-    private final List<String> messages;
-    private final HttpStatus httpStatus;
+    private final String message;
 
-    public AssignmentException(List<String> messages, HttpStatus httpStatus) {
-        this.messages = messages;
-        this.httpStatus = httpStatus;
+    public AssignmentException(String id, String repositorySource) {
+        this.message = String.format("Resource with '%s', was not found in repository: '%s'.", id, repositorySource);
     }
 
-    public AssignmentException(String label, HttpStatus httpStatus) {
-        this.messages = new ArrayList<>();
-        this.messages.add(label);
-        this.httpStatus = httpStatus;
-    }
-
-    public List<String> getMessages() {
-        return messages;
+    public String getMessages() {
+        return message;
     }
 
     public HttpStatus getHttpStatus() {
-        return httpStatus;
+        return HttpStatus.BAD_REQUEST;
     }
+
 }
