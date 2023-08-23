@@ -15,7 +15,7 @@ public class UserDataRestResponse {
     private final String firstName;
     String lastName;
     int age;
-    String gender;
+    public String gender;
     List<HobbyEntity> hobbies;
 
     public UserDataRestResponse(String firstName, String lastName, int age, String gender, List<HobbyEntity> hobbies) {
@@ -24,14 +24,6 @@ public class UserDataRestResponse {
         this.age = age;
         this.gender = gender;
         this.hobbies = hobbies;
-    }
-    // TODO: move to the entity itself
-    public UserEntity toUserEntity() {
-        Gender validGender = Arrays.stream(Gender.values())
-                .filter(it -> it.getName().equals(gender))
-                .findFirst()
-                .orElseThrow(() -> new AssignmentException(INVALID_GENDER_ERROR_LABEL, HttpStatus.BAD_REQUEST));
-        return new UserEntity(firstName, lastName, age, validGender, hobbies);
     }
 
     public String getFirstName() { return firstName; }

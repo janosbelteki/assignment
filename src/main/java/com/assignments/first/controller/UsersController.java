@@ -92,7 +92,11 @@ public class UsersController extends AssignmentExceptionHandler {
                 getCorrectOrder(order),
                 getCorrectOrderBy(orderBy, HOBBY_LIST_DEFAULT_ORDER_BY)
         );
-        final FilterParams filterParams = new FilterParams(search, startDate, endDate, userIds);
+        final FilterParams filterParams = new FilterParams();
+        filterParams.setSearch(search);
+        filterParams.setStartDate(startDate);
+        filterParams.setEndDate(endDate);
+        filterParams.setUserIds(userIds);
         logger.info("Get hobbies, filterParams: " + filterParams + ", pagingConfig: " + pagingConfig);
         final HobbyResponse hobbyResponse = userService.getHobbies(filterParams, pagingConfig);
         return ResponseEntity.ok().contentLength(10).contentType(MediaType.APPLICATION_JSON).body(hobbyResponse);

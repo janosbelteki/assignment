@@ -1,5 +1,6 @@
 package com.assignments.first.database;
 
+import com.assignments.first.service.UserService;
 import com.assignments.first.repository.entities.UserEntity;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,12 +28,12 @@ import static com.assignments.first.common.Constants.USER_TABLE;
 
 @Component
 public class DataInitializer {
-    private UserRepository userRepository;
+    private UserService userService;
     private static final Logger logger = LoggerFactory.getLogger(DataInitializer.class);
 
     @Autowired
-    public DataInitializer(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public DataInitializer(UserService userService) {
+        this.userService = userService;
     }
 
     public DataInitializer() {
@@ -50,7 +51,7 @@ public class DataInitializer {
             InputStream inputStream = getClass().getClassLoader().getResourceAsStream(USER_DATA_PATH);
             List<UserEntity> users = objectMapper.readValue(inputStream, new TypeReference<>() {});
 
-            userRepository.saveUsers(users);
+            userService.saveUsers(users);
         }
     }
 

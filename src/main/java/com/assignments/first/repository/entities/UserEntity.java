@@ -1,6 +1,8 @@
 package com.assignments.first.repository.entities;
 
 import com.assignments.first.common.enums.Gender;
+import com.assignments.first.controller.dtos.requests.UserDataRestResponse;
+import com.assignments.first.exceptions.AssignmentException;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,10 +13,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import org.springframework.http.HttpStatus;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import static com.assignments.first.common.Constants.INVALID_GENDER_ERROR_LABEL;
 import static com.assignments.first.common.Constants.USER_TABLE;
 
 @Entity
@@ -41,12 +46,21 @@ public class UserEntity {
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private List<HobbyEntity> hobbies;
 
-    public UserEntity(String firstName, String lastName, int age, Gender gender, List<HobbyEntity> hobbies) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.gender = gender;
-        this.hobbies = hobbies;
+    public UserEntity() {
+    }
+
+    public static UserEntity createUserEntity(UserDataRestResponse currentUserDataRestResponse) {
+        Gender validGender = Arrays.stream(Gender.values())
+                .filter(it -> it.getName().equals(currentUserDataRestResponse.gender))
+                .findFirst()
+                .orElseThrow(() -> new AssignmentException(INVALID_GENDER_ERROR_LABEL, "A"));
+        UserEntity userEntity = new UserEntity();
+        userEntity.setFirstName(currentUserDataRestResponse.getFirstName());
+        userEntity.setLastName(currentUserDataRestResponse.getLastName());
+        userEntity.setAge(currentUserDataRestResponse.getAge());
+        userEntity.setGender(validGender);
+        userEntity.setHobbies(currentUserDataRestResponse.getHobbies());
+        return userEntity;
     }
 
     public UUID getId() {

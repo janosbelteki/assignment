@@ -27,4 +27,7 @@ public final class Constants {
     public static final String INVALID_PAGE_LIMIT_ERROR_LABEL = "invalid_page_limit_error_label";
     public static final String INVALID_PAGE_INDEX_ERROR_LABEL = "invalid_page_index_error_label";
     public static final String INVALID_GENDER_ERROR_LABEL = "invalid_gender_error_label";
+
+    // Queue collection
+    public static final Long QUEUE_CHECK = 60000L;
 }
